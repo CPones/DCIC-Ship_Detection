@@ -13,7 +13,7 @@
 | valid     | 1000  |
 | test      | 18112 |
 
-**目录结构**
+目录结构
 ```
 DATASET_VOC/
 ├── annotations
