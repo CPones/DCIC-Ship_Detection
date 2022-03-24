@@ -4,6 +4,7 @@
 
 ## 二、项目任务
 快速精准的检测出船舶的垂直边框是船舶智能检测的基本需求。本项目以训练数据集中船舶和相应垂直边框信息为学习依据，要求对测试数据集中的船舶进行检测（图a），求解出船舶对应垂直边框（图b）。需要考虑SAR图像和船舶目标的特性，如背景强散射杂波的不均匀性，目标的不完整性、十字旁瓣模糊和临近目标干扰等，设计科学适用的算法模型进行船舶的智能检测。
+
 ![](https://ai-studio-static-online.cdn.bcebos.com/bbb26718571547019de46c49e4602a11eeface39ddf943399e8f21570012de46)
 
 ## 三、数据集介绍
@@ -82,10 +83,19 @@ TEST/
 ```
 
 ## 五、结果及分析
-epoch=4评估结果：
+- 模型评估
+epoch=4：mAP=84.97%，FPS=4.95。
 
-ppdet.metrics.metrics INFO: mAP(0.50, 11point) = **84.97%**
+- 模型预测
 
-ppdet.engine INFO: Total sample number: 1000, averge FPS: **4.953250333101723**
+![](./infer_output/00034.jpg)
 
+![](./infer_output/00316.jpg)
 
+- 模型提升
+
+Faster RCNN的作者在论文中提到："A similar alternating training can be run for more iterations, but we have observed negligible improvements"，即循环更多次精度没有提升了。这是因为Faster RCNN在模型搭建阶段使用的卷积层比较少，可学习参数经过少数几次迭代即可收敛，在模型预测阶段阈值的设定界限直接影响bounding box的生成。
+
+1. 模型结构：backbone选取resnet101_vd_fpn_ssld_2x，参考PaddleClas套件
+2. 数据增强：RandomResize、AutoAugment、Mixup等
+3. 分批预测：测试集图像分组预测，draw_threshold=[0.5, 0.6, 0.7, 0.8]
