@@ -43,7 +43,7 @@ TEST/
 !unzip -oq data/data134192/DATASET_VOC.zip -d data/dataset
 !unzip -oq data/data134192/TEST.zip -d data
 ```
-- 安装配置文件
+- 安装依赖库
 ```
 #!git clone https://gitee.com/PaddlePaddle/PaddleDetection.git
 
@@ -53,6 +53,12 @@ TEST/
 # 编译安装paddledet
 !cd PaddleDetection && python setup.py install
 ```
+
+- 修改配置文件
+
+替换`PaddleDetection/configs/datasets/voc.yml`和`PaddleDetection/configs/faster_rcnn/faster_rcnn_r50_1x_coco.yml`的内容，
+配置文件保存在本项目的`DCIC_Ship_Detection/config`文件夹内。
+
 - 模型训练
 ```
 !python PaddleDetection/tools/train.py -c PaddleDetection/configs/faster_rcnn/faster_rcnn_r50_1x_coco.yml   \
