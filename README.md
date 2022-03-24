@@ -76,5 +76,10 @@ TEST/
 ```
 
 ## 五、结果及分析
+epoch=4评估结果：
+
+ppdet.metrics.metrics INFO: mAP(0.50, 11point) = **84.97%**
+
+ppdet.engine INFO: Total sample number: 1000, averge FPS: **4.953250333101723**
 
 
