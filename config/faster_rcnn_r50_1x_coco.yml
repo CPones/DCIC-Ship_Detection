@@ -1,0 +1,9 @@
+_BASE_: [
+  #继承voc.yml格式数据集
+  '../datasets/voc.yml',
+  '../runtime.yml',
+  '_base_/optimizer_1x.yml',
+  '_base_/faster_rcnn_r50.yml',
+  '_base_/faster_reader.yml',
+]
+weights: output/faster_rcnn_r50_1x_coco/model_final
