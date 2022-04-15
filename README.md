@@ -87,7 +87,7 @@ TEST/
 
 epoch=4：mAP=84.97%，FPS=4.95。
 
-epoch=4：mAP=86.73%，FPS=4.79.
+epoch=8：mAP=86.73%，FPS=4.79.
 
 - 模型预测
 
